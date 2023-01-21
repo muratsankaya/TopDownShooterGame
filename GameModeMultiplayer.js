@@ -1,19 +1,8 @@
-//The dimensions of the image being used as a map is 1280 x 1280.
-//Dimensions of the canvas is 640 x 640
-//Canvas is located at the middle of the map. Any map position to the left and up of the canvas is negative.
-//All the zombies appear at a random point 128 px away from the boundaries of the map
-
-//There are two separate positioning logic. One is to display the object on the Canvas.
-//The other is for the positions on the map. Where the game is actually being played.
-
-//To position the objects on the grid: int((Object's map position + 448(to handle negative positions))/this.gridUnitVertex) +1(int always rounds down)
-//To translate map position to canvas 320 - mapX or mapY (use this to display the objects correctly)
-//To translate canvas position to map mapX or mapY -320 (this is useful for the shooter)
-
-//All the zombies and bullets created are being reused each level with minor changes on their attributes(for zombies)
+//The dimensions of the image being used as a map is 1280 x 1280 px
+//Dimensions of the canvas is 640 x 640 px
 
 //All the images and shapes are calculated from the center
-//Only the map's posItion to display on the canvas is calculated from the top left corner
+//Only the map's position to display on the canvas is calculated from the top left corner
 
 //for sound
 let SOUND;
