@@ -1,0 +1,312 @@
+
+<!doctype html>
+<html>
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- <script src="p5.min.js"></script> -->
+    <script src="Zombie.js"></script>
+    <script src="AStarSearch.js"></script>
+    <script src="Bullet.js"></script>
+    <script src="Weapon.js"></script>
+    <script src="Shooter.js"></script>
+    <!-- <script src="GameModeMultiplayer.js"></script> -->
+    <!-- <script src="GameModeZombies.js"></script> -->
+
+    <!-- custom CSS -->
+    <style type="text/css">
+
+      #center_flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      #controls {
+        position: absolute;
+        margin-top: 650px;
+        margin-left: 290px;
+        text-align: center;
+      }
+
+      #start_box_multiplayer{
+        align-items: center;
+        position: absolute;
+        padding: 3%;
+        background-color: white;
+        display: none;
+      }
+
+      #start_box_zombies{
+        align-items: center;
+        position: absolute;
+        padding: 3%;
+        background-color: white;
+        display: none;
+      }
+
+      #start_start_box{
+        align-items: center;
+        position: absolute;
+        padding: 3%;
+        background-color: white;
+      }
+
+      #loading{
+        width: 50px;
+        height: 50px;
+        visibility: hidden;
+      }
+
+      #backButtonDiv{
+        position: absolute;
+        padding-top: 2%;
+        padding-left: 2%;
+      }
+
+      body{
+        background-color: black;
+      }
+
+      .transformCenter{
+        position: absolute;
+        top: 50%; right: 50%;
+        transform: translate(50%,-50%);
+      }
+
+      .instructions{
+        margin-left: 1000px;
+        background-color: white;
+        padding: 1%;
+        position: absolute;
+      }
+
+      .sound{
+        display: none;
+      }
+
+      .DesignPL{
+        margin-top: 5%;
+      }
+
+      .control_btn {
+        appearance: none;
+        background-color: #FAFBFC;
+        border: 1px solid rgba(27, 31, 35, 0.15);
+        border-radius: 6px;
+        box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+        box-sizing: border-box;
+        color: #24292E;
+        cursor: pointer;
+        display: inline-block;
+        font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        list-style: none;
+        padding: 6px 16px;
+        position: relative;
+        transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+        white-space: nowrap;
+        word-wrap: break-word;
+      }
+
+      .control_btn:hover {
+        background-color: #F3F4F6;
+        text-decoration: none;
+        transition-duration: 0.1s;
+      }
+
+      .control_btn:disabled {
+        display: none;
+      }
+
+      .control_btn:active {
+        background-color: #EDEFF2;
+        box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+        transition: none 0s;
+      }
+
+      .control_btn:focus {
+        outline: 1px transparent;
+      }
+
+      .control_btn:before {
+        display: none;
+      }
+
+      .control_btn:-webkit-details-marker {
+        display: none;
+      }
+
+    </style>
+    <script>
+
+
+      function zombies(){
+
+        document.getElementById('loading').style.visibility = 'visible';
+
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "GameModeZombies.js";
+        document.head.appendChild(script);
+
+        const script2 = document.createElement("script");
+        script2.type = "text/javascript";
+        script2.src = "p5.min.js";
+        document.head.appendChild(script2);
+
+      }
+
+      function multiplayer(){
+
+        document.getElementById('loading').style.visibility = 'visible';
+
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "GameModeMultiplayer.js";
+        document.head.appendChild(script);
+
+        const script2 = document.createElement("script");
+        script2.type = "text/javascript";
+        script2.src = "p5.min.js";
+        document.head.appendChild(script2);
+
+      }
+
+
+
+    </script>
+
+  </head>
+  <body>
+    <audio id="reload" class='sound'>
+      <source src="Sound/reload.wav">
+    </audio>
+    <audio id="handgun" class='sound'>
+      <source src="Sound/handgun.wav">
+    </audio>
+    <audio id="zombieSound0" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-1.wav">
+    </audio>
+    <audio id="zombieSound1" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-2.wav">
+    </audio>
+    <audio id="zombieSound2" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-3.wav">
+    </audio>
+    <audio id="zombieSound3" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-4.wav">
+    </audio>
+    <audio id="zombieSound4" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-5.wav">
+    </audio>
+    <audio id="zombieSound5" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-6.wav">
+    </audio>
+    <audio id="zombieSound6" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-7.wav">
+    </audio>
+    <audio id="zombieSound7" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-8.wav">
+    </audio>
+    <audio id="zombieSound8" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-9.wav">
+    </audio>
+    <audio id="zombieSound9" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-10.wav">
+    </audio>
+    <audio id="zombieSound10" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-11.wav">
+    </audio>
+    <audio id="zombieSound11" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-12.wav">
+    </audio>
+    <audio id="zombieSound12" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-13.wav">
+    </audio>
+    <audio id="zombieSound13" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-14.wav">
+    </audio>
+    <audio id="zombieSound14" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-15.wav">
+    </audio>
+    <audio id="zombieSound15" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-16.wav">
+    </audio>
+    <audio id="zombieSound16" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-17.wav">
+    </audio>
+    <audio id="zombieSound17" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-18.wav">
+    </audio>
+    <audio id="zombieSound18" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-19.wav">
+    </audio>
+    <audio id="zombieSound19" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-20.wav">
+    </audio>
+    <audio id="zombieSound20" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-21.wav">
+    </audio>
+    <audio id="zombieSound21" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-22.wav">
+    </audio>
+    <audio id="zombieSound22" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-23.wav">
+    </audio>
+    <audio id="zombieSound23" class='sound'>
+      <source src="Sound/Zombie_Sound/zombie-24.wav">
+    </audio>
+    <div id='backButtonDiv'>
+      <button class='btn btn-outline-light' onclick="window.location.href='InteractiveProjects/../../index.html';"> &#8592; Interactive Projects</button>
+    </div>
+    <div id="center_flex">
+      <div id="my_center">
+        <div id="controls">
+          <button  type="button" class="control_btn" onclick="myPause()" disabled> || </button>
+          <button  type="button" class="control_btn" onclick="resume()" disabled> > </button>
+          <button id='ply_agn_btn' type="button" class="btn btn-success" onclick="window.location.reload(true);" style="display:none;"> Play Again </button>
+        </div>
+      </div>
+      <div class="instructions">
+        <p>
+          A: Move Left <br>
+          D: Move Right <br>
+          W: Move Up <br>
+          S: Move down <br>
+          Space: Shoot <br>
+          L: Clockwise rotation <br>
+          K: Counter cw rotation <br>
+        </p>
+      </div>
+      <div id="start_box_zombies" disabled>
+        <h3> Welcome to my game ! </h3>
+        <p> Please choose a difficulity to play: </p>
+        <button type="button" class="btn btn-success" onclick="easy()"> Easy </button>
+        <button type="button" class="btn btn-warning" onclick="medium()"> Medium </button>
+        <button type="button" class="btn btn-danger" onclick="hard()"> Hard </button>
+      </div>
+      <div id="start_box_multiplayer" disabled>
+        <h3> Welcome to my game ! </h3>
+        <p> Select a gun: </p>
+        <button type="button" class="btn btn-warning" onclick="shotgun()"> Shotgun </button>
+        <button type="button" class="btn btn-warning" onclick="rifle()"> Rifle </button>
+      </div>
+      <div id="start_start_box" >
+        <h3> Welcome to my game ! </h3>
+        <p> Please see the box on the right on how to play </p>
+        <button type="button" class="btn btn-danger" onclick="zombies()"> Zombies</button>
+        <button type="button" class="btn btn-success" onclick="multiplayer()"> Multiplayer </button>
+      </div>
+    </div>
+    <div class='transformCenter'>
+      <img id='loading' src='Images/loading.gif'/>
+    </div>
+  </body>
+</html>
