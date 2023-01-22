@@ -18,7 +18,7 @@ function getLine(x1, y1, x2, y2, w, h){ //p1, p2, width, height
   let x = x1, y = y1, line = [], unit;
 
   if(x1 == x2){
-    unit = map(abs(y1-y2), 0, w, .01, 25);
+    unit = map(abs(y1-y2), 0, h, .01, 25);
     if(y1 < y2){
       while(y <= y2){
         line.push([x, y]);
@@ -36,7 +36,7 @@ function getLine(x1, y1, x2, y2, w, h){ //p1, p2, width, height
   else{
     let m = (y2 - y1) / (x2 - x1);
     let b =  y1 - m*x1;
-    unit = map(abs(x1-x2), 0, h, .01, 25);
+    unit = map(abs(x1-x2), 0, w, .01, 25);
     if(x1 < x2){
       while(x <= x2){
         line.push([x, y]);
