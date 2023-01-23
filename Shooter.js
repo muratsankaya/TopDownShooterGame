@@ -121,7 +121,7 @@ class Shooter{
   }
 
   shoot(bullet, mapX, mapY, isBot=false, owner=null){
-    
+
     return this.selectedWeapon.fire(this.xPos, this.yPos, mapX, mapY, this.aimAngle, bullet, isBot, owner);
 
   }

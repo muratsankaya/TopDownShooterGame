@@ -540,19 +540,6 @@ function setup() {
 
   GAME = new GameControllerZ(GRAPHICS, SOUND);
 
-  setTimeout( function(){
-
-    let startStartBox = document.getElementById('start_start_box');
-    startStartBox.disabled = true;
-    startStartBox.style.display = 'none';
-    let zBox = document.getElementById('start_box_zombies');
-    zBox.disabled = false;
-    zBox.style.display = 'inline';
-
-    document.getElementById('loading').style.visibility = 'hidden';
-
-  }, 1000);
-
 }
 
 function myPause(){ //p5 has a function called paused
