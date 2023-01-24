@@ -52,9 +52,9 @@
         background-color: white;
       }
 
-      #loading{
-        width: 50px;
-        height: 50px;
+      #loader{
+        width: 40px;
+        height: 40px;
         visibility: hidden;
       }
 
@@ -149,7 +149,7 @@
 
       function zombies(){
 
-        document.getElementById('loading').style.visibility = 'visible';
+        document.getElementById('loader').style.visibility = 'visible';
 
         const script = document.createElement("script");
         script.type = "text/javascript";
@@ -170,7 +170,7 @@
           zBox.disabled = false;
           zBox.style.display = 'inline';
 
-          document.getElementById('loading').style.visibility = 'hidden';
+          document.getElementById('loader').style.visibility = 'hidden';
 
         }, 2000);
 
@@ -178,7 +178,7 @@
 
       function multiplayer(){
 
-        document.getElementById('loading').style.visibility = 'visible';
+        document.getElementById('loader').style.visibility = 'visible';
 
         const script = document.createElement("script");
         script.type = "text/javascript";
@@ -199,7 +199,7 @@
           mBox.disabled = false;
           mBox.style.display = 'inline';
 
-          document.getElementById('loading').style.visibility = 'hidden';
+          document.getElementById('loader').style.visibility = 'hidden';
 
         }, 2000);
 
@@ -331,7 +331,7 @@
       </div>
     </div>
     <div class='transformCenter'>
-      <img id='loading' src='Images/loading.gif'/>
+      <img id='loader' src='Images/loader.gif'/>
     </div>
   </body>
 </html>
