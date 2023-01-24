@@ -614,14 +614,28 @@ function removeStartBox(){
 }
 
 function shotgun(){
-  GAME.shooter.setGunType('Shotgun');
-  removeStartBox();
-  startGame();
+  setup(); //make sure the game setup is complete
+
+  setTimeout( function(){ //give a second for the game to be ready
+
+    GAME.shooter.setGunType('Shotgun');
+    removeStartBox();
+    startGame();
+
+  }, 1000);
+
 }
 
 function rifle(){ //currently the default gun type is an assualy rifle
-  removeStartBox();
-  startGame();
+  setup();//make sure the game setup is complete
+
+  setTimeout( function(){ //give a second for the game to be ready
+
+    removeStartBox();
+    startGame();
+
+  }, 1000);
+
 }
 
 function draw(){

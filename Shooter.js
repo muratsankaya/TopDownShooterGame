@@ -145,14 +145,6 @@ class Bot extends Shooter{
     this.yNoiseOffSet = random(-4000, 4000);
   }
 
-  getTargetLocation(){
-    return this.targetLocation;
-  }
-
-  setTargetLocation(target){
-    this.targetLocation = target; //[x, y]
-  }
-
   setAim(targetX, targetY, d){ //d for distance
 
     let xCoef = (targetX - this.xPos)/d;
@@ -220,7 +212,6 @@ class Bot extends Shooter{
   }
 
   giveLifeAndResetPosition(l){
-    this.missionAssigned = false;
     this.xPos = l[0];
     this.yPos = l[1];
     this.health = this.healthC;

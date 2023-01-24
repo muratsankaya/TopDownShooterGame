@@ -558,25 +558,46 @@ function startGame(){
   for(let i = 0; i < buttons.length; ++i){
     buttons[i].disabled = false;
   }
-  loop();
   GAME.state = 1;
+  loop();
 }
 
 function easy(){ //default settings are for easy so I just update the GAMEstate
-  GAME.addZombies(30); //Easy mode starts with 30 zombies
-  startGame();
+  setup(); //make sure the setup is complete
+
+  setTimeout( function(){
+
+    GAME.addZombies(30); //Easy mode starts with 30 zombies
+    startGame();
+
+  }, 1000);
+
 }
 
 function medium(){
-  GAME.addZombies(50); //Medium starts with  50 zombies
-  GAME.setDificulity(2)
-  startGame();
+  setup(); //make sure the game setup is complete
+
+  setTimeout( function(){
+
+    GAME.addZombies(50); //Medium starts with  50 zombies
+    GAME.setDificulity(2)
+    startGame();
+
+  }, 1000);
+
 }
 
 function hard(){
-  GAME.addZombies(70); //Hard starts with 70 zombies
-  GAME.setDificulity(3)
-  startGame();
+  setup(); //make sure the game setup is complete
+
+  setTimeout( function(){
+
+    GAME.addZombies(70); //Hard starts with 70 zombies
+    GAME.setDificulity(3)
+    startGame();
+
+  }, 1000);
+
 }
 
 function stopDraw(){
