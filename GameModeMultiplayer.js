@@ -1,7 +1,5 @@
 //The dimensions of the image being used as a map is 1280 x 1280.
 //Dimensions of the canvas is 640 x 640
-//Canvas is located at the middle of the map. Any map position to the left and up of the canvas is negative.
-//All the zombies appear at a random point 128 px away from the boundaries of the map
 
 //There are two separate positioning logic. One is to display the object on the Canvas.
 //The other is for the positions on the map. Where the game is actually being played.
