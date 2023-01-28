@@ -8,7 +8,7 @@
 
 The schematic above is to visualize the connection between each object in the code structure. 
 
-*Please note that even though any formal methodology for data hiding is not in use. For safety purposes, direct access to data fields is mostly avoided.*
+*Please note that even though any formal methodology for data hiding is ***not*** in use. For safety purposes, direct access to data fields is mostly avoided.*
 
 ### Positional Logic 
 
