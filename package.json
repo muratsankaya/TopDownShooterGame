@@ -1,0 +1,35 @@
+{
+  "name": "top-down-shooter-game",
+  "version": "1.0.0",
+  "description": "This is light-weight top-down shooter game for the web",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No test commands specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muratsankaya/TopDownShooterGame.git"
+  },
+  "keywords": [
+    "game",
+    "web",
+    "2D",
+    "top-down",
+    "shooter",
+    "zombies"
+  ],
+  "author": "Murat Sankaya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muratsankaya/TopDownShooterGame/issues"
+  },
+  "homepage": "https://github.com/muratsankaya/TopDownShooterGame#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "open": "^9.1.0"
+  },
+  "script": {
+    "start-dev": "node server.js",
+    "start": "npm run start-dev"
+  }
+}
